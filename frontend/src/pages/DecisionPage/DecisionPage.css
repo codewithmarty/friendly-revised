@@ -1,0 +1,102 @@
+.userName {
+  width: 905px;
+}
+
+.userPhoto {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-bottom: 20px;
+}
+.yes-no {
+  display: flex;
+  justify-content: center;
+}
+
+.yes {
+  margin: 2rem 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.no {
+  margin: 2rem 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.yes:hover,
+.no:hover {
+  color: white;
+  background: black;
+  box-shadow: 4px 4px 60px 8px #f59608;
+  cursor: pointer;
+}
+
+.swipe-form {
+  display: flex;
+  justify-content: center;
+}
+
+.decisionPN {
+  background: none;
+  padding: 3em;
+  width: 1000px;
+  height: 30vh;
+  border-radius: 20px;
+}
+
+.bioWrapper {
+  width: 154vh;
+  height: 35vh;
+  padding: 2rem;
+  border: 1px solid #f3c98b;
+  background: #f3c98b;
+  margin-left: 23vh;
+  margin-top: 2rem;
+  border-radius: 15px;
+  word-break: break-all;
+}
+
+.userInterests {
+  width: 154vh;
+  height: 35vh;
+  padding: 2rem;
+  border: 1px solid #c46d5e;
+  background: #c46d5e;
+  margin-left: 23vh;
+  margin-top: 2rem;
+  margin-bottom: 2vh;
+  border-radius: 15px;
+}
+
+.interestList {
+  list-style-type: none;
+  margin: 1rem 1rem;
+  padding: 0.8em;
+  border: none;
+  border-radius: 10px;
+}
+
+.arrowBtnDown {
+  margin-top: 20px;
+  background-color: #9cf6f6;;
+  border-radius: 25%;
+  width: 50px;
+}
+
+.arrowBtnUp {
+  margin-top: 20px;
+  background-color: #9cf6f6;;
+  transform: scaleY(-1);
+  border-radius: 25%;
+  width: 50px;
+}
+
+.arrowBtnUp:hover,
+.arrowBtnDown:hover {
+  cursor: pointer;
+}

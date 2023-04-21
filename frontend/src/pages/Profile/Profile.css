@@ -1,0 +1,171 @@
+.photoUploadForm {
+    display: flex;
+  }
+  
+.profileTitle {
+    padding: 1.2rem;
+}
+
+.profileEmail {
+    padding: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.profileName {
+    font-size: 40px;
+}
+
+.hide {
+    display: none;
+}
+
+.profileImage {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid white;
+    flex: 0 0 100%;
+}
+
+.friendName {
+    flex: 0 0 100%;
+}
+
+.profileImg {
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: -30px;
+}
+
+.showBtn {
+    margin: 1rem 1rem;
+    padding: 0.8em;
+    border: none;
+    border-radius: 10px;
+}
+
+.hideBtn {
+    margin: 1rem 1rem;
+    padding: 0.8em;
+    border: none;
+    border-radius: 10px;
+}
+
+.hideBtn:hover,
+.showBtn:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.friendList {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    height: 40px;
+    padding: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.imager {
+    margin-top: -40px;
+    justify-content: center;
+}
+
+.fileContainer {
+    background: none;
+}
+
+.confirmBtn {
+    margin: 1rem 1rem;
+    padding: 0.8em;
+    border: none;
+    border-radius: 10px;
+}
+
+.xDelete {
+    background-color: rgb(0, 0, 0, 0.1);
+    color: red;
+    border-radius: 50%;
+    border: white;
+}
+
+.xDelete:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.profileFormWrap {
+    display: fixed;
+}
+
+.profileIndex {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    flex-wrap: wrap;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .profileIndex {
+        width: 100%;
+    }
+}
+
+.profileIndex div h2 {
+    margin-top: 2rem;
+}
+
+.card {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.card-img {
+  width: 40%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.card-title {
+  margin-top: 0px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-text {
+  margin-bottom: 16px;
+  font-size: 14px;
+  flex-grow: 1;
+}
+
+.card-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card-btn:hover {
+  background-color: #0D8AFF;
+}

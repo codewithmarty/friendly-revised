@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nav-wrapper {
+  display: flex;
+  max-height: 200px;
+  height: 40px;
+  padding: 25px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #9cf6f6;
+}
+
+.home {
+  text-decoration: none;
+  color: black;
+}
+
+.profile {
+  text-decoration: none;
+  color: black;
+}
+
+.logout {
+  background-color: #f3c98b;
+  padding: 0.8em;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+.logoutBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#messengerLogo {
+  width: 35px;
+  align-content: center;
+  padding-left: 0.6rem;
+}
+
+#homeLogo {
+  width: 35px;
+  align-content: center;
+  padding-left: 0.6rem;
+  margin-bottom: 0.3rem;
+}

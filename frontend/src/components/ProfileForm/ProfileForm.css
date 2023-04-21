@@ -1,0 +1,47 @@
+.profileForm {
+  background: #f3c98b;
+  width: 600px;
+  padding: 80px;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  border-radius: 1em;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+.profileFormWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.submitFormBtn {
+  margin-top: 20px;
+  background: #9cf6f6;
+  width: 200px;
+  padding: 1em;
+  margin-bottom: 2em;
+  border: none;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: black;
+}
+
+.title-name {
+  padding: 0.5rem;
+}
+
+.bio {
+  outline: none;
+  resize: none;
+  overflow: auto;
+}
