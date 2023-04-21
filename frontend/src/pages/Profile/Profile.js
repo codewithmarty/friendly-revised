@@ -9,7 +9,6 @@ import './Profile.css'
 const Profile = ({ user, setUserInState}) => {
 
     const [file, setFile] = useState(null)
-    const [toggle, setToggle] = useState(false)
     const [friendRequests, setFriendRequests] = useState([])
 
     const handleChange = (evt) => {
@@ -47,35 +46,25 @@ const Profile = ({ user, setUserInState}) => {
     return (
         
         <div className='profileIndex'>
-            <div>
-                <h2 className="profileName">{user.name}</h2>
-                <button className="showBtn" onClick = {() => setToggle(!toggle)}>Friend List</button>
-                <div className={!toggle ? 'hidden' : undefined }>
-                    {user.friends ? user.friends.map(friend => 
-                        <div className="friendList" key={friend._id}>
-                            <img className="profileImage" src={friend.imageUrl} alt="" />
-                            <p className="friendName">{friend.name}<button className="xDelete">X</button></p>
-                        </div>
-                    ) : <>No friends yet!</>}
-                    <button className="hideBtn" onClick = { () => setToggle(!toggle) }>Hide Friends</button> 
-                </div>
 
-                { user.imageUrl && user.bio ? 
-                    <>
+            { user.imageUrl && user.bio ? 
+                <>
+                    <div>
+                        <h2 className="profileName">{user.name}</h2>
                         <div className="photoUpload"> 
                             <img className="profileImg" src={user.imageUrl} alt="" />
                             <br />
                             <input onChange={handleChange} type="file" id="myFile" accept="image/*" />
                             <button className='confirmBtn' onClick={handleUploadImage}>Upload</button>
-                            <ProfileData user={user} setUserInState={setUserInState} />
                         </div>
-                    </>
-                : 
-                    <div className="profileFormWrap">
-                        <ProfileForm className="photoUploadForm" user={user} setUserInState={setUserInState} />
                     </div>
-                }
-            </div>
+                    <ProfileData user={user} setUserInState={setUserInState} />
+                </>
+            : 
+                <div className="profileFormWrap">
+                        <ProfileForm className="photoUploadForm" user={user} setUserInState={setUserInState} />
+                </div>
+            }
             <div>
                 <h2>Friend Requests</h2>
                 { friendRequests.length ? 

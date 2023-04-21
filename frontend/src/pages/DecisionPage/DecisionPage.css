@@ -50,24 +50,23 @@
 }
 
 .bioWrapper {
-  width: 154vh;
+  width: 43vw;
   height: 35vh;
   padding: 2rem;
   border: 1px solid #f3c98b;
   background: #f3c98b;
-  margin-left: 23vh;
   margin-top: 2rem;
   border-radius: 15px;
   word-break: break-all;
+  text-align: justify;
 }
 
 .userInterests {
-  width: 154vh;
+  width: 43vw;
   height: 35vh;
   padding: 2rem;
   border: 1px solid #c46d5e;
   background: #c46d5e;
-  margin-left: 23vh;
   margin-top: 2rem;
   margin-bottom: 2vh;
   border-radius: 15px;

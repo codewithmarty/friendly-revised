@@ -44,7 +44,8 @@
   padding: 25px;
   align-items: center;
   justify-content: space-between;
-  background-color: #9cf6f6;
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .home {
@@ -62,11 +63,12 @@
   padding: 0.8em;
   border: none;
   border-radius: 10px;
-  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
   font-weight: 500;
   transition: all 0.2s ease-in-out;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   color: black;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
 }
 
 .logoutBtn {

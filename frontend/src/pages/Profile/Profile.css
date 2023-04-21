@@ -107,16 +107,10 @@
 
 .profileIndex {
     display: flex;
-    justify-content: center;
-    width: 50%;
+    justify-content: space-around;
+    width: 100%;
     flex-wrap: wrap;
     margin: auto;
-}
-
-@media (max-width: 768px) {
-    .profileIndex {
-        width: 100%;
-    }
 }
 
 .profileIndex div h2 {
@@ -168,4 +162,8 @@
 
 .card-btn:hover {
   background-color: #0D8AFF;
+}
+
+.bioIndex  p {
+    text-align: justify;
 }

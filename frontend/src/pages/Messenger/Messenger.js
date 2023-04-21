@@ -10,9 +10,10 @@ import "./Messenger.css"
 const Messenger = ({ user }) => {
 
     const [conversations, setConversations] = useState([])
+    const [notifications, setNotifications] = useState([])
     const [currentChat, setCurrentChat] = useState(null)
     const [messages, setMessages] = useState([])
-    const [newMessage, setNewMessage] = useState(null)
+    const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
 
     const socket = useRef()
@@ -34,8 +35,9 @@ const Messenger = ({ user }) => {
 
     useEffect( () => {
 
-        arrivalMessage && currentChat.members.includes(arrivalMessage.sender) &&
+        arrivalMessage &&
         setMessages( prev => [...prev, arrivalMessage] )
+        setNotifications([...notifications, arrivalMessage])
 
     }, [arrivalMessage, currentChat])
 
@@ -70,7 +72,6 @@ const Messenger = ({ user }) => {
         const getMessages = async () => {
 
             try {
-
                 let fetchMessagesDataResponse = await fetch(`/api/friendships/messages/${user._id}/${currentChat._id}`)
                 if (!fetchMessagesDataResponse.ok) throw new Error("Couldn't fetch orders")
                 let messagesData = await fetchMessagesDataResponse.json() 
@@ -79,9 +80,10 @@ const Messenger = ({ user }) => {
             } catch(err) {
                 console.log(err)
             }
+
         }
 
-        getMessages()
+        if (currentChat) getMessages()
 
     }, [currentChat])
 
@@ -101,7 +103,6 @@ const Messenger = ({ user }) => {
         })
 
         try {
-
             await axios.post("/api/friendships/newMessage", message);
             setMessages([...messages, message]);
             setNewMessage("");
@@ -121,10 +122,10 @@ const Messenger = ({ user }) => {
         <div className="messenger">
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
-                    <h2>Chats</h2>
-                    {conversations.map((c) => (
-                        <div onClick={() => setCurrentChat(c)}>
-                            <Conversation conversation={c} />
+                    <h2>Friends</h2>
+                    {conversations.map((c, idx) => (
+                        <div key={idx} onClick={() => setCurrentChat(c)}>
+                            <Conversation current={currentChat && currentChat._id == c._id} conversation={c} />
                         </div>
                     ))}
                 </div>
@@ -134,8 +135,8 @@ const Messenger = ({ user }) => {
                     {currentChat ?
                         <>
                             <div className="chatBoxTop">
-                                { messages.map((m)=>(
-                                    <div ref={scrollRef}>
+                                { messages.map((m, idx)=>(
+                                    <div key={idx} ref={scrollRef}>
                                         <Message message={m} own={m.senderId === user._id}/>
                                     </div>
                                 )) }

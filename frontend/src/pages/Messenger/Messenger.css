@@ -1,10 +1,7 @@
 .messenger {
-  /* height: calc(100vh - 70px); */
   display: flex;
-}
-
-.chatMenu {
-  flex: 3.5;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .chatMenuInput {
@@ -15,7 +12,7 @@
 }
 
 .chatBox {
-  flex: 5.5;
+  width: 60%;
 }
 
 .chatBoxTop {
@@ -73,7 +70,8 @@
 }
 
 .conversationImg {
-  width: 3rem;
+  width: 4rem;
+  border-radius: 50%;
 }
 
 .conversation {
@@ -84,8 +82,38 @@
   gap: 5rem;
 }
 
+.conversation.active {
+  background-color: #1877f2;
+  border: none;
+  border-radius: 2rem;
+  color: white;
+}
+
 .conversation:hover {
   border: 1px solid rgb(141, 141, 141);
   cursor: pointer;
   border-radius: 2rem;
+}
+
+.message {
+  width: 80%;
+}
+
+.info {
+  border: 1px solid gray;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.editBtn {
+  margin: 3rem 7rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.profileIndex {
+  margin: 4rem auto;
 }

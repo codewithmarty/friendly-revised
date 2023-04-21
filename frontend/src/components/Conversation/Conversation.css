@@ -6,6 +6,10 @@
   margin-top: 20px;
 }
 
+.conversation.active {
+  border: 1px solid green;
+}
+
 .conversation:hover {
   background: rgb(245, 245, 245);
 }

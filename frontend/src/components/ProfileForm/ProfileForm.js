@@ -49,7 +49,7 @@ const ProfileForm = ({ user, setUserInState }) => {
             <textarea
                 className="bioArea"
                 rows="5"
-                cols="53"
+                cols="42"
                 name="bio"
                 onChange={(evt) => setState({ ...state, bio: evt.target.value })}
                 placeholder={user.bio}></textarea>

@@ -14,7 +14,7 @@ const ProfileData = ({ user, setUserInState }) => {
                     <EditProfile user={user} setClicked={setClicked} setUserInState={setUserInState} />
                 </div>
                 :
-                <>
+                <div className="info">
                     <div className='bioIndex'>
                         <h2>Bio: </h2>
                         <p className="bioBlock">{user.bio}</p>
@@ -24,7 +24,7 @@ const ProfileData = ({ user, setUserInState }) => {
                         {user.interests ? user.interests.map((interest, idx) => <p key={idx}>{interest.label}</p>) : <>No interests yet</>}
                     </div>
                     <button className="editBtn" onClick={ () => setClicked(true) }>Edit Profile</button>
-                </>
+                </div>
             }
         </>
     )     

@@ -55,9 +55,9 @@ async function updateRequests(req, res) {
         const request = await Friendship.findOne({ receiver: req.body.user, sender: req.body.friend })
         request.confirmed = true
         request.save()
-        const requests = await Friendship.find({ receiver: req.body.user, confirmed: false })
+        let requests = await Friendship.find({ receiver: req.body.user, confirmed: false })
         requests = requests.map(request => request.sender)
-        const requesters = await User.find({ _id: { $in: requests } })
+        const requesters = await User.find({ _id: { $nin: [requests, req.body.user].flat(Infinity) } })
         res.status(200).json(requesters)
     } catch (err) {
         res.status(400).json(err)
@@ -92,7 +92,7 @@ async function getChats(req, res) {
 async function getMessages(req, res) {
 
     try {
-        const messages = await Message.find({ $or: [{ sender: req.params.userId, receiver: req.params.friendId }, { sender: req.params.friendId, receiver: req.params.userId }] })
+        const messages = await Message.find({ $or: [{ senderId: req.params.userId, receiverId: req.params.friendId }, { senderId: req.params.friendId, receiverId: req.params.userId }] })
         .populate([
             'senderId',
             'receiverId'
