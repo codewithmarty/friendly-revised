@@ -107,6 +107,12 @@
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .info {
+    border-radius: 0;
+  }
+}
+
 .editBtn {
   margin: 3rem 7rem;
   padding: 0.8rem;

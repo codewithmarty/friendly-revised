@@ -16,6 +16,8 @@ const App = () => {
     user: null
   })
 
+  const [conversations, setConversations] = useState([])
+
   useEffect(() => {
     async function fetchUser() {
 
@@ -32,6 +34,27 @@ const App = () => {
     fetchUser()
   }, [])
 
+
+  useEffect(() => {
+
+    const getConversations = async () => {
+
+        try {
+
+            let fetchConversationDataResponse = await fetch('/api/friendships/chats/'+state.user._id)
+            if (!fetchConversationDataResponse.ok) throw new Error("Couldn't fetch conversations")
+            let conversationsData = await fetchConversationDataResponse.json()
+            setConversations(conversationsData)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    if (state.user) getConversations()
+
+  },[state.user])
+
   const handleLogOut = () => {
     localStorage.removeItem('token');
     setState({ ...state, user: null })      
@@ -46,8 +69,8 @@ const App = () => {
       <Navbar handleLogOut={handleLogOut} user={state.user} />
       { state.user ? 
         <Routes>
-          <Route path={'/profile'} element={<Profile user={state.user} setUserInState={setUserInState} />} />
-          <Route path={'/messenger'} element={<Messenger user={state.user} />} />
+          <Route path={'/profile'} element={<Profile user={state.user} setUserInState={setUserInState} conversations={conversations} setConversations={setConversations} />} />
+          <Route path={'/messenger'} element={<Messenger user={state.user} conversations={conversations} />} />
           <Route path={'/'} element={<DecisionPage user={state.user} />} />
         </Routes>
       :

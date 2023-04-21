@@ -1,0 +1,32 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.carousel-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 4rem;
+}
+
+.carousel-image.active {
+  border: 3px solid #1877f2;
+}
+
+.carousel-button {
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: rgb(54, 54, 54);
+  font-size: 1em;
+}
+
+.carousel-button:first-of-type {
+  left: 0;
+}
+
+.carousel-button:last-of-type {
+  right: 0;
+}
+

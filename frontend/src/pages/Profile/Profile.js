@@ -3,10 +3,11 @@ import axios from 'axios'
 
 import ProfileData from '../../components/ProfileData/ProfileData'
 import ProfileForm from '../../components/ProfileForm/ProfileForm'
+import Conversation from '../../components/Conversation/Conversation'
 
 import './Profile.css'
 
-const Profile = ({ user, setUserInState}) => {
+const Profile = ({ user, setUserInState, conversations, setConversations }) => {
 
     const [file, setFile] = useState(null)
     const [friendRequests, setFriendRequests] = useState([])
@@ -33,6 +34,7 @@ const Profile = ({ user, setUserInState}) => {
     const handleAcceptRequest = async (request) => {
         const res = await axios.put(`/api/friendships/update`, { user: user._id, friend: request._id })
         setFriendRequests(res.data)
+        setConversations([...conversations, request])
     }
 
     useEffect(() => {
@@ -62,7 +64,7 @@ const Profile = ({ user, setUserInState}) => {
                 </>
             : 
                 <div className="profileFormWrap">
-                        <ProfileForm className="photoUploadForm" user={user} setUserInState={setUserInState} />
+                    <ProfileForm className="photoUploadForm" user={user} setUserInState={setUserInState} />
                 </div>
             }
             <div>
@@ -82,6 +84,12 @@ const Profile = ({ user, setUserInState}) => {
                     </> 
                     : 
                     <p><br/>...no friend requests</p>}
+            </div>
+            <div>
+                <h2>Friends</h2><br />
+                {conversations && conversations.map((conv, idx) => (
+                    <Conversation key={idx} current={false} conversation={conv} />
+                ))}
             </div>
         </div>
 

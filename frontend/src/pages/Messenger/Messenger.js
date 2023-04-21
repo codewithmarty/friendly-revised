@@ -4,20 +4,32 @@ import {io} from "socket.io-client";
 
 import Conversation from "../../components/Conversation/Conversation"
 import Message from "../../components/Message/Message"
+import Carousel from '../../components/Carousel/Carousel';
 
 import "./Messenger.css"
 
-const Messenger = ({ user }) => {
+const Messenger = ({ user, conversations }) => {
 
-    const [conversations, setConversations] = useState([])
-    const [notifications, setNotifications] = useState([])
     const [currentChat, setCurrentChat] = useState(null)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const socket = useRef()
     const scrollRef = useRef()
+
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+    
+      useEffect(() => {
+        window.addEventListener("resize", handleResize);
+    
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
 
     useEffect( () => {
 
@@ -37,7 +49,6 @@ const Messenger = ({ user }) => {
 
         arrivalMessage &&
         setMessages( prev => [...prev, arrivalMessage] )
-        setNotifications([...notifications, arrivalMessage])
 
     }, [arrivalMessage, currentChat])
 
@@ -46,26 +57,6 @@ const Messenger = ({ user }) => {
         socket.current.emit("send-user", user._id)
 
     }, [user])
-
-    useEffect(() => {
-
-        const getConversations = async () => {
-
-            try {
-
-                let fetchConversationDataResponse = await fetch('/api/friendships/chats/'+user._id)
-                if (!fetchConversationDataResponse.ok) throw new Error("Couldn't fetch conversations")
-                let conversationsData = await fetchConversationDataResponse.json()
-                setConversations(conversationsData)
-
-            } catch (err) {
-                console.log(err)
-            }
-        }
-
-        getConversations()
-
-    },[user._id])
 
     useEffect(() => {
 
@@ -120,16 +111,25 @@ const Messenger = ({ user }) => {
 
     return (
         <div className="messenger">
-            <div className="chatMenu">
-                <div className="chatMenuWrapper">
-                    <h2>Friends</h2>
-                    {conversations.map((c, idx) => (
-                        <div key={idx} onClick={() => setCurrentChat(c)}>
-                            <Conversation current={currentChat && currentChat._id == c._id} conversation={c} />
-                        </div>
-                    ))}
+            {/* <h1>{windowWidth}</h1>  */}
+
+                <div className="chatMenu">
+                    <div className="chatMenuWrapper">
+                        <br /><h2>Friends</h2><br />
+                        {conversations.map((conv, idx) => (
+                            <div key={idx} onClick={() => setCurrentChat(conv)}>
+                                { windowWidth >= 840 ?
+                                    <Conversation current={currentChat && currentChat._id === conv._id} conversation={conv} />
+                                :
+                                    <>
+                                        <Carousel current={currentChat && currentChat._id === conv._id} images={conversations.map( (conv) => conv.imageUrl )}/><br />                          
+                                    </>
+                                }
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            
             <div className="chatBox"> 
                 <div className="chatBoxWrapper">
                     {currentChat ?
