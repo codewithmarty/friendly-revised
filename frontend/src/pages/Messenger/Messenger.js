@@ -4,7 +4,6 @@ import {io} from "socket.io-client";
 
 import Conversation from "../../components/Conversation/Conversation"
 import Message from "../../components/Message/Message"
-import Carousel from '../../components/Carousel/Carousel';
 
 import "./Messenger.css"
 
@@ -14,22 +13,9 @@ const Messenger = ({ user, conversations }) => {
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState("")
     const [arrivalMessage, setArrivalMessage] = useState(null)
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const socket = useRef()
     const scrollRef = useRef()
-
-    const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
-    
-      useEffect(() => {
-        window.addEventListener("resize", handleResize);
-    
-        return () => {
-          window.removeEventListener("resize", handleResize);
-        };
-      }, []);
 
     useEffect( () => {
 
@@ -111,22 +97,17 @@ const Messenger = ({ user, conversations }) => {
 
     return (
         <div className="messenger">
-            {/* <h1>{windowWidth}</h1>  */}
 
                 <div className="chatMenu">
                     <div className="chatMenuWrapper">
                         <br /><h2>Friends</h2><br />
-                        {conversations.map((conv, idx) => (
-                            <div key={idx} onClick={() => setCurrentChat(conv)}>
-                                { windowWidth >= 840 ?
+                        <div>
+                            {conversations.map((conv, idx) => (
+                                <div key={idx} onClick={() => setCurrentChat(conv)}>
                                     <Conversation current={currentChat && currentChat._id === conv._id} conversation={conv} />
-                                :
-                                    <>
-                                        <Carousel current={currentChat && currentChat._id === conv._id} images={conversations.map( (conv) => conv.imageUrl )}/><br />                          
-                                    </>
-                                }
-                            </div>
-                        ))}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             

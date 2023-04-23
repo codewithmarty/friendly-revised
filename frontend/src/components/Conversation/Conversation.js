@@ -6,7 +6,7 @@ const Conversation = ({ current, conversation }) => {
     return (
         <div className={className}>
             <img className="conversationImg" src={conversation.imageUrl} alt="" />
-            <span className="conversationName">{conversation.name}</span>
+            <span className="conversationName">{conversation.name.substring(0, 10)+'...'}</span>
         </div>
     )
 

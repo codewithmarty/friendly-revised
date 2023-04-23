@@ -24,12 +24,10 @@ const DecisionPage = ({ user }) => {
       setState({...state, allUsers: allUsers, currentProfile: allUsers[0] })
     }
 
-    const handleFriendRequest = (incoming_friend_id) => {
-      axios.post('/api/friendships', {
+    const handleFriendRequest = async (incoming_friend_id) => {
+      await axios.post('/api/friendships', {
         senderId: user._id,
         receiverId: incoming_friend_id
-      }).then(res => {
-        setState({ ...state, allUsers: res.data })
       })
     }
 
@@ -37,12 +35,11 @@ const DecisionPage = ({ user }) => {
       setState({ ...state, currentProfile:  state.allUsers[index] })
     } 
 
-    const handleYesSwipe = (incomingUser) => {
-      let allUsers = state.allUsers;
-      allUsers = allUsers.splice(state.index, 1)
-      getCurrentProfile(state.index)
+    const handleYesSwipe = async (incomingUser) => {
       handleFriendRequest(incomingUser._id)
-      setState({...state, allUsers: allUsers, likedUsers: [...state.likedUsers, incomingUser]})
+      const remainingUsers = state.allUsers.filter(user => user._id !== incomingUser._id)
+      const nextUser = remainingUsers.length ? remainingUsers[remainingUsers.length-1] : {}
+      setState({...state, likedUsers: [...state.likedUsers, incomingUser], allUsers: remainingUsers, currentProfile: nextUser})
     } 
     
     const handleNoSwipe = (incomingUser) => {

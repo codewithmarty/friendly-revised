@@ -34,7 +34,6 @@ const App = () => {
     fetchUser()
   }, [])
 
-
   useEffect(() => {
 
     const getConversations = async () => {

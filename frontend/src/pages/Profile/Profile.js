@@ -85,11 +85,13 @@ const Profile = ({ user, setUserInState, conversations, setConversations }) => {
                     : 
                     <p><br/>...no friend requests</p>}
             </div>
-            <div>
+            <div className="friends">
                 <h2>Friends</h2><br />
-                {conversations && conversations.map((conv, idx) => (
-                    <Conversation key={idx} current={false} conversation={conv} />
-                ))}
+                <div>
+                    {conversations && conversations.map((conv, idx) => (
+                        <Conversation key={idx} current={false} conversation={conv} />
+                    ))}
+                </div>
             </div>
         </div>
 
